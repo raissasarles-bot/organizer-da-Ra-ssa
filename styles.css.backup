@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Organizer da Raíssa - Organize suas tarefas diárias, semanais e mensais">
+    <meta name="theme-color" content="#a855f7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Organizer da Raíssa">
+
+    <title>Organizer da Raíssa</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1>✨ Organizer da Raíssa</h1>
+            <button class="btn btn-primary" id="saveTaskBtn">Salvar Tarefa</button>
+        </div>
+        </div>
+        </div>
+
+        <!-- MODAL: Add/Edit Category -->
+        <div class="modal" id="categoryModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="categoryModalTitle">Nova Categoria</h2>
+                    <button class="modal-close" id="closeCategoryModal">×</button>
+                </div>
+                <div class="modal-body">
+                    <form id="categoryForm">
+
+                        <div class="form-group">
+                            <label class="form-label" for="categoryName">Nome da Categoria *</label>
+                            <input type="text" id="categoryName" class="form-input" placeholder="Ex: Exercícios"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="categoryEmoji">Emoji *</label>
+                            <input type="text" id="categoryEmoji" class="form-input" placeholder="Ex: 💪" maxlength="2"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="categoryColor">Cor *</label>
+                            <input type="color" id="categoryColor" class="form-input" value="#a855f7" required>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="cancelCategoryBtn">Cancelar</button>
+                    <button class="btn btn-primary" id="saveCategoryBtn">Salvar Categoria</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="app.js"></script>
+
+        <!-- PWA Registration -->
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('service-worker.js')
+                        .then(reg => console.log('Service Worker registrado!'))
+                        .catch(err => console.log('Erro ao registrar Service Worker:', err));
+                });
+            }
+        </script>
+
+</body>
+
+</html>

@@ -12,49 +12,37 @@
 
     <title>Organizer da Raíssa</title>
 
-    <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
-
-    <!-- Icons -->
     <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png">
     <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <!-- Header -->
     <header class="header">
         <div class="header-content">
             <h1>✨ Organizer da Raíssa</h1>
-            <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
-                🌙
-            </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">🌙</button>
         </div>
     </header>
 
-    <!-- Navigation Tabs -->
     <nav class="nav-tabs">
         <button class="nav-tab active" data-view="today">📅 Hoje</button>
         <button class="nav-tab" data-view="week">📆 Semana</button>
         <button class="nav-tab" data-view="month">🗓️ Mês</button>
         <button class="nav-tab" data-view="categories">🏷️ Categorias</button>
+        <button class="nav-tab" data-view="settings">⚙️ Configurações</button>
     </nav>
 
-    <!-- Main Container -->
     <main class="container">
 
-        <!-- TODAY VIEW -->
         <div id="todayView" class="view active">
-
-            <!-- Progress Section -->
             <section class="progress-section">
                 <div class="progress-header">
                     <h3>Progresso de Hoje</h3>
@@ -65,37 +53,25 @@
                 </div>
             </section>
 
-            <!-- Action Buttons -->
             <div class="action-buttons">
-                <button class="btn btn-primary" id="addTaskBtn">
-                    ➕ Nova Tarefa
-                </button>
+                <button class="btn btn-primary" id="addTaskBtn">➕ Nova Tarefa</button>
             </div>
 
-            <!-- Task List -->
-            <div class="task-list" id="todayTaskList">
-                <!-- Tasks will be rendered here -->
-            </div>
+            <div class="task-list" id="todayTaskList"></div>
 
-            <!-- Empty State -->
             <div class="empty-state hidden" id="todayEmptyState">
                 <div class="empty-state-icon">📝</div>
                 <p class="empty-state-text">Nenhuma tarefa para hoje</p>
-                <p style="color: var(--text-muted); font-size: var(--font-size-sm);">
-                    Adicione uma nova tarefa para começar!
-                </p>
+                <p style="color: var(--text-muted); font-size: var(--font-size-sm);">Adicione uma nova tarefa para
+                    começar!</p>
             </div>
         </div>
 
-        <!-- WEEK VIEW -->
         <div id="weekView" class="view">
             <h2 class="mb-lg">Visão Semanal</h2>
-            <div class="week-grid" id="weekGrid">
-                <!-- Week days will be rendered here -->
-            </div>
+            <div class="week-grid" id="weekGrid"></div>
         </div>
 
-        <!-- MONTH VIEW -->
         <div id="monthView" class="view">
             <div
                 style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
@@ -103,29 +79,62 @@
                 <h2 id="monthTitle">Mês</h2>
                 <button class="btn btn-secondary" id="nextMonth">Próximo →</button>
             </div>
-            <div class="month-grid" id="monthGrid">
-                <!-- Month calendar will be rendered here -->
-            </div>
+            <div class="month-grid" id="monthGrid"></div>
         </div>
 
-        <!-- CATEGORIES VIEW -->
         <div id="categoriesView" class="view">
             <h2 class="mb-lg">Gerenciar Categorias</h2>
-
             <div class="action-buttons">
-                <button class="btn btn-primary" id="addCategoryBtn">
-                    ➕ Nova Categoria
-                </button>
+                <button class="btn btn-primary" id="addCategoryBtn">➕ Nova Categoria</button>
             </div>
+            <div class="task-list" id="categoriesList"></div>
+        </div>
 
-            <div class="task-list" id="categoriesList">
-                <!-- Categories will be rendered here -->
-            </div>
+        <div id="settingsView" class="view">
+            <h2 class="mb-lg">⚙️ Configurações</h2>
+            <section class="settings-section">
+                <h3 style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-md);">🔔 Notificações</h3>
+                <div class="settings-card">
+                    <div class="settings-item">
+                        <div>
+                            <strong>Status de Permissão</strong>
+                            <p id="notificationStatus"
+                                style="color: var(--text-secondary); font-size: var(--font-size-sm); margin-top: var(--spacing-xs);">
+                                Verificando...</p>
+                        </div>
+                    </div>
+                    <div class="settings-item">
+                        <button class="btn btn-primary" id="requestNotificationBtn">🔔 Ativar Notificações</button>
+                    </div>
+                    <div class="settings-item">
+                        <button class="btn btn-secondary" id="testNotificationBtn">🧪 Testar Notificação</button>
+                    </div>
+                </div>
+                <div class="info-box" style="margin-top: var(--spacing-lg);">
+                    <p style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6;">
+                        <strong>ℹ️ Sobre Notificações:</strong><br>
+                        • Funciona melhor quando o app está instalado na tela inicial<br>
+                        • No iOS, requer Safari e iOS 16.4 ou superior<br>
+                        • Você pode configurar lembretes individuais para cada tarefa<br>
+                        • Notificações funcionam mesmo com o app fechado
+                    </p>
+                </div>
+            </section>
+            <section class="settings-section" style="margin-top: var(--spacing-2xl);">
+                <h3 style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-md);">📅 Calendário</h3>
+                <div class="info-box">
+                    <p style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6;">
+                        <strong>ℹ️ Exportar para Calendário:</strong><br>
+                        • Cada tarefa pode ser adicionada ao Calendário do iPhone<br>
+                        • Use o botão "📅 Adicionar ao Calendário" ao visualizar uma tarefa<br>
+                        • O arquivo .ics será baixado e pode ser aberto no Calendário nativo
+                    </p>
+                </div>
+            </section>
         </div>
 
     </main>
 
-    <!-- MODAL: Add/Edit Task -->
     <div class="modal" id="taskModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -134,31 +143,41 @@
             </div>
             <div class="modal-body">
                 <form id="taskForm">
-
                     <div class="form-group">
                         <label class="form-label" for="taskTitle">Título da Tarefa *</label>
                         <input type="text" id="taskTitle" class="form-input" placeholder="Ex: Passear com o cachorro"
                             required>
                     </div>
-
                     <div class="form-group">
                         <label class="form-label" for="taskDescription">Descrição (opcional)</label>
                         <textarea id="taskDescription" class="form-textarea"
                             placeholder="Adicione detalhes sobre a tarefa..."></textarea>
                     </div>
-
                     <div class="form-group">
                         <label class="form-label">Categoria *</label>
-                        <div class="category-grid" id="categorySelector">
-                            <!-- Categories will be rendered here -->
-                        </div>
+                        <div class="category-grid" id="categorySelector"></div>
                     </div>
-
                     <div class="form-group">
                         <label class="form-label" for="taskDate">Data *</label>
                         <input type="date" id="taskDate" class="form-input" required>
                     </div>
-
+                    <div class="form-group">
+                        <label class="form-label" for="taskTime">Horário (opcional)</label>
+                        <input type="time" id="taskTime" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="taskReminder">Lembrete</label>
+                        <select id="taskReminder" class="form-select">
+                            <option value="none">Sem lembrete</option>
+                            <option value="5">5 minutos antes</option>
+                            <option value="15">15 minutos antes</option>
+                            <option value="60">1 hora antes</option>
+                            <option value="0">No horário exato</option>
+                        </select>
+                        <small
+                            style="color: var(--text-muted); font-size: var(--font-size-xs); margin-top: var(--spacing-xs); display: block;">⚠️
+                            Requer horário definido e permissão de notificações</small>
+                    </div>
                     <div class="form-group">
                         <label class="form-label" for="taskRecurrence">Recorrência</label>
                         <select id="taskRecurrence" class="form-select">
@@ -168,7 +187,6 @@
                             <option value="monthly">Mensal</option>
                         </select>
                     </div>
-
                 </form>
             </div>
             <div class="modal-footer">
@@ -178,7 +196,6 @@
         </div>
     </div>
 
-    <!-- MODAL: Add/Edit Category -->
     <div class="modal" id="categoryModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -187,23 +204,19 @@
             </div>
             <div class="modal-body">
                 <form id="categoryForm">
-
                     <div class="form-group">
                         <label class="form-label" for="categoryName">Nome da Categoria *</label>
                         <input type="text" id="categoryName" class="form-input" placeholder="Ex: Exercícios" required>
                     </div>
-
                     <div class="form-group">
                         <label class="form-label" for="categoryEmoji">Emoji *</label>
                         <input type="text" id="categoryEmoji" class="form-input" placeholder="Ex: 💪" maxlength="2"
                             required>
                     </div>
-
                     <div class="form-group">
                         <label class="form-label" for="categoryColor">Cor *</label>
                         <input type="color" id="categoryColor" class="form-input" value="#a855f7" required>
                     </div>
-
                 </form>
             </div>
             <div class="modal-footer">
@@ -213,10 +226,10 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+    <script src="calendar.js"></script>
     <script src="app.js"></script>
+    <script src="app-v2.js"></script>
 
-    <!-- PWA Registration -->
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
